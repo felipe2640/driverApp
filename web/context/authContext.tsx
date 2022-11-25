@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import Router, { useRouter } from "next/router";
 import type { NextRequest } from "next/server";
-import { getUserEndpoint, IUser, signIn } from "../helpers/backend";
+import { IUser, signIn } from "../helpers/backend";
 import { toast } from "react-toastify";
 const AuthContext = createContext<any>({});
 
