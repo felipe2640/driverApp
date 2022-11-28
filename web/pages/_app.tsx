@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AuthContextProvider } from "../context/authContext";
 import ProtectedRoute from "../components/ProtectedRoute";
 
-const noAuthRequired = ["/Login"];
+const noAuthRequired = ["/"];
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
