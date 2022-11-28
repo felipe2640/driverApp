@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import Router, { useRouter } from "next/router";
 import type { NextRequest } from "next/server";
-import { IUser, signIn } from "../helpers/backend";
+import { createDriver, IUser, signIn } from "../helpers/backend";
 import { toast } from "react-toastify";
 const AuthContext = createContext<any>({});
 
@@ -20,7 +20,15 @@ export const AuthContextProvider = ({
     setLoading(false);
   }, []);
 
-  const signup = ({}) => {};
+  const signup = async (data: any) => {
+    const dataLowercaseValue = Object.fromEntries(
+      Object.entries(data).map(([key, value]: any) => [
+        key,
+        value.toLowerCase(),
+      ])
+    );
+    await createDriver(dataLowercaseValue);
+  };
   const login = async (data: any) => {
     signIn(data).then((resp: any) => {
       if (resp === undefined) {

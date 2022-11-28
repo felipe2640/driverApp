@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { createDriver } from "../helpers/backend";
+import { useAuth } from "../context/authContext";
 
 import { Buttons } from "./Button";
 import { TextInput } from "./TextInput";
@@ -14,20 +14,15 @@ function FormCadastro() {
     Modelo: "",
     Placa: "",
   });
+  const { user, signup } = useAuth();
 
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
     setLoading(true);
-    const dataLowercaseValue = Object.fromEntries(
-      Object.entries(data).map(([key, value]: any) => [
-        key,
-        value.toLowerCase(),
-      ])
-    );
 
-    await createDriver(dataLowercaseValue);
+    await signup(data);
 
     setLoading(false);
   };
