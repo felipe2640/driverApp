@@ -35,7 +35,7 @@ export const AuthContextProvider = ({
         return;
       }
       setUser(resp);
-      router.push("/");
+      router.push("/Driver");
     });
   };
   const logout = async () => {
